@@ -9,15 +9,20 @@ export async function getUserByIdApi(id) {
 }
 
 export async function createUserApi(data) {
-  setTimeout(() => {
-    return fetch(`${BASE_URL}/users`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((res) => res.json());
-  }, 3000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      fetch(`${BASE_URL}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then(resolve)
+        .catch(reject);
+    }, 3000);
+  });
 }
 
 export async function deleteUserApi(id) {

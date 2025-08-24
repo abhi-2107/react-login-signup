@@ -1,13 +1,13 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import Button from "./Button";
-import Col from "./Col";
-import Input from "./Input";
-import Row from "./Row";
+import Button from "../components/Button";
+import Col from "../components/Col";
+import Input from "../components/Input";
+import Row from "../components/Row";
 import { useState } from "react";
-import { loginUserApi } from "./userResource";
-import Loader from "./Loader";
-import Alert from "./Alert";
-import { Link } from "react-router-dom";
+import { loginUserApi } from "../userResource";
+import Loader from "../components/Loader";
+import Alert from "../components/Alert";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [loginStatus, setLoginStatus] = useState({
@@ -17,12 +17,14 @@ function Login() {
   });
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const login = async () => {
     setLoginStatus({ loading: true, data: null, error: null });
     try {
       const data = await loginUserApi(name, password);
       setLoginStatus({ loading: false, data, error: null });
+      navigate("/");
     } catch (error) {
       setLoginStatus({ loading: false, data: null, error });
     }

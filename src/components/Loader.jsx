@@ -30,10 +30,10 @@ export default function Loader({
   }
 
   return (
-    <div class="flex items-center justify-center ">
+    <div className="flex items-center justify-center ">
       <div
         style={{ height: size * 8, width: size * 8, borderWidth: size }}
-        class="lue-500 border-t-transparent rounded-full animate-spin"
+        className="lue-500 border-t-transparent rounded-full animate-spin"
       ></div>
     </div>
   );
