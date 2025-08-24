@@ -2,12 +2,12 @@ import { useState } from "react";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import Input from "../components/Input";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "../components/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserApi } from "../userResource";
 import Alert from "../components/Alert";
 import Loader from "../components/Loader";
+import InputPassword from "../components/InputPassword";
 
 function Signup() {
   const [signupStatus, setsignupStatus] = useState({
@@ -25,8 +25,6 @@ function Signup() {
   });
   const [formErrors, setFormErrors] = useState({});
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async () => {
@@ -146,26 +144,17 @@ function Signup() {
               </Row>
               <Row className="gap-10  w-full">
                 <Col>
-                  <Input
+                  <InputPassword
                     value={userInfo.password}
                     onChange={(e) =>
                       setUserInfo({ ...userInfo, password: e.target.value })
                     }
                     placeholder="NEW PASSWORD"
-                    icon={
-                      <Icon
-                        onClick={() => setShowPassword((s) => !s)}
-                        icon="mdi-light:eye"
-                        className="hover:bg-green-200 hover:text-green-800 rounded-full cursor-pointer "
-                      />
-                    }
-                    iconPosition="right"
-                    type={showPassword ? "text" : "password"}
-                  ></Input>
+                  ></InputPassword>
                   <p className="text-red-500">{formErrors.password}</p>
                 </Col>
                 <Col>
-                  <Input
+                  <InputPassword
                     value={userInfo.confirmPassword}
                     onChange={(e) =>
                       setUserInfo({
@@ -174,16 +163,7 @@ function Signup() {
                       })
                     }
                     placeholder="CONFIRM NEW PASSWORD"
-                    icon={
-                      <Icon
-                        onClick={() => setShowConfirmPassword((s) => !s)}
-                        icon="mdi-light:eye"
-                        className="hover:bg-green-200 hover:text-green-800 rounded-full cursor-pointer "
-                      />
-                    }
-                    iconPosition="right"
-                    type={showConfirmPassword ? "text" : "password"}
-                  ></Input>
+                  ></InputPassword>
                   {formErrors && (
                     <p className="text-red-500">{formErrors.confirmPassword}</p>
                   )}

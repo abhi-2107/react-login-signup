@@ -8,6 +8,7 @@ import { loginUserApi } from "../userResource";
 import Loader from "../components/Loader";
 import Alert from "../components/Alert";
 import { Link, useNavigate } from "react-router-dom";
+import InputPassword from "../components/InputPassword";
 
 function Login() {
   const [loginStatus, setLoginStatus] = useState({
@@ -52,14 +53,11 @@ function Login() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="USERNAME"
               ></Input>
-              <Input
+              <InputPassword
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="PASSWORD"
-                icon={<Icon icon="mdi-light:eye" />}
-                iconPosition="right"
-                type="password"
-              ></Input>
+              ></InputPassword>
               <Col center>
                 <Button
                   disabled={

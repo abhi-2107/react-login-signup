@@ -13,7 +13,7 @@ export default function Input({
       {/* Input */}
       <label
         className={`absolute transition-all text-sm text-green-800 pointer-events-none ${
-          focused || props.value.length > 0
+          focused || props.value?.length > 0
             ? " translate-x-0 -translate-y-4 scale-75 "
             : "translate-x-3 translate-y-2"
         } `}

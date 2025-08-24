@@ -17,3 +17,7 @@ run json server
 
 `npm run dev`
 visit `http://localhost:5173/` in browser
+
+### you can watch everything in action by clicking on url-
+
+https://drive.google.com/file/d/1eNnDWYl6VqeXbfjPQOkp9lcpnpebUcc1/view?usp=sharing
