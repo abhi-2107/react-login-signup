@@ -14,7 +14,7 @@ export default function Input({
       <label
         className={`absolute transition-all text-sm text-green-800 pointer-events-none ${
           focused || props.value.length > 0
-            ? " translate-x-0 -translate-y-3 scale-75 "
+            ? " translate-x-0 -translate-y-4 scale-75 "
             : "translate-x-3 translate-y-2"
         } `}
       >
@@ -24,9 +24,9 @@ export default function Input({
         type={type}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className={`w-full  border-b-2 border-b-green-800 px-3 py-2 focus:outline-none  ${
-          icon ? (iconPosition === "left" ? "pl-10" : "pr-10") : ""
-        }`}
+        className={`w-full  border-b-2 border-b-green-800 px-3 py-2 focus:outline-none ${
+          focused && "bg-gray-100 rounded-t"
+        }  ${icon ? (iconPosition === "left" ? "pl-10" : "pr-10") : ""}`}
         {...props}
       />
 

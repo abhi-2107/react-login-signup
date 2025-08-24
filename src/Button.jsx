@@ -58,7 +58,11 @@ export default function Button({
         paddingBottom: size * 1.5,
         fontSize: size * 5,
       }}
-      className={`cursor-pointer text-white bg-green-theme  rounded-sm focus:outline-none 
+      className={`cursor-pointer  rounded-sm focus:outline-none ${
+        props.disabled
+          ? "bg-gray-300 text-gray-700"
+          : "bg-green-theme text-white"
+      }
             ${props.className || ""}`}
     >
       {children}

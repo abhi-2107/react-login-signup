@@ -21,13 +21,14 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async () => {
     setsignupStatus({ loading: true, data: null, error: null });
     try {
       createUserApi(userInfo);
-
       setsignupStatus({ loading: false, data: userInfo, error: null });
       navigate("/auth/login");
     } catch (error) {
@@ -67,6 +68,7 @@ function Signup() {
                     setUserInfo({ ...userInfo, email: e.target.value })
                   }
                   placeholder="EMAIL"
+                  type="email"
                 ></Input>
               </Row>
               <Row className="gap-10  w-full">
@@ -83,9 +85,6 @@ function Signup() {
                     setUserInfo({ ...userInfo, phone: e.target.value })
                   }
                   placeholder="PHONE NO."
-                  icon={<Icon icon="mdi-light:eye" />}
-                  iconPosition="right"
-                  type="password"
                 ></Input>
               </Row>
               <Row className="gap-10  w-full">
@@ -95,9 +94,15 @@ function Signup() {
                     setUserInfo({ ...userInfo, password: e.target.value })
                   }
                   placeholder="NEW PASSWORD"
-                  icon={<Icon icon="mdi-light:eye" />}
+                  icon={
+                    <Icon
+                      onClick={() => setShowPassword((s) => !s)}
+                      icon="mdi-light:eye"
+                      className="hover:bg-green-200 hover:text-green-800 rounded-full cursor-pointer "
+                    />
+                  }
                   iconPosition="right"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                 ></Input>
                 <Input
                   value={userInfo.confirmPassword}
@@ -108,9 +113,15 @@ function Signup() {
                     })
                   }
                   placeholder="CONFIRM NEW PASSWORD"
-                  icon={<Icon icon="mdi-light:eye" />}
+                  icon={
+                    <Icon
+                      onClick={() => setShowConfirmPassword((s) => !s)}
+                      icon="mdi-light:eye"
+                      className="hover:bg-green-200 hover:text-green-800 rounded-full cursor-pointer "
+                    />
+                  }
                   iconPosition="right"
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                 ></Input>
               </Row>
 
@@ -118,7 +129,12 @@ function Signup() {
                 <Button
                   disabled={
                     signupStatus.loading ||
-                    userInfo.password.trim().length === 0
+                    userInfo.name.trim().length === 0 ||
+                    userInfo.username.trim().length === 0 ||
+                    userInfo.email.trim().length === 0 ||
+                    userInfo.phone.trim().length === 0 ||
+                    userInfo.password.trim().length === 0 ||
+                    userInfo.confirmPassword.trim().length === 0
                   }
                   className="w-50 flex justify-center  gap-2 p-2"
                   onClick={() => handleSignup(userInfo)}

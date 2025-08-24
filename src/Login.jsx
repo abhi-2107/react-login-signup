@@ -65,7 +65,7 @@ function Login() {
                     password.trim().length === 0 ||
                     name.trim().length === 0
                   }
-                  className="w-30 flex justify-center gap-2"
+                  className="w-30 flex justify-center gap-2 "
                   onClick={() => login()}
                 >
                   {loginStatus.loading && <Loader size={2} />} Login
