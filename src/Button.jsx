@@ -50,6 +50,7 @@ export default function Button({
   return (
     <button
       onClick={onClick}
+      disabled={props.disabled || false}
       style={{
         paddingLeft: size * 3,
         paddingRight: size * 3,
